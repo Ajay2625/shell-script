@@ -7,7 +7,7 @@ Y="\e[33m"
 N="\e[0m"
 
 FILE_FOLDER_NAME="/var/log/shell-scripting.logs"
-LOG_FILE=$(echo "$0" | cut -d "." -f)
+LOG_FILE=$(echo "$0" | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$FILE_FOLDER_NAME/$LOG_FILE-$TIMESTAMP.log"
 
