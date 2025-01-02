@@ -4,25 +4,26 @@ USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
+N="\e[0m"
 
 FILE_FOLDER_NAME="/var/log/shell-scripting.logs"
-LOG_FILE=echo "S0" | cut -d "." -f1
+LOG_FILE=$(echo "S0" | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$FILE_FOLDER_NAME/$LOG_FILE-$TIMESTAMP.log"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 .... $R FAILURE"
+        echo -e "$2 .... $R FAILURE $N"
         exit 1
     else
-        echo -e "$2... $G SUCCESS"
+        echo -e "$2... $G SUCCESS $N"
     fi
 }
 
 echo "Script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
 
-if [ USERID -ne 0 ]
+if [ $USERID -ne 0 ]
 then
     echo "ERROR:: you must have sudo access to exicute this script"
     exit 1
@@ -37,7 +38,7 @@ then
 
     VALIDATE $? "Installing Mysql"
 else
-    echo -e "MYSQL already .... $Y INSTALLED"
+    echo -e "MYSQL already .... $Y INSTALLED $N"
 fi
 
 dnf list installed git &>>$LOG_FILE_NAME
@@ -49,5 +50,5 @@ then
 
     VALIDATE $? "Installing Git"
 else
-    echo -e "GIT Already... $Y INSTALLED"
+    echo -e "GIT Already... $Y INSTALLED $N"
 fi 
