@@ -7,7 +7,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-SIURCE_DIR="/var/log/shellscript-logs"
+SOURCE_DIR="/var/log/shellscript-logs"
 
 FOLDER_NAME="/var/log/Expense-shell"
 FILE_NAME=$(echo $0 | cut -d "." -f1)
