@@ -21,6 +21,7 @@ then
     echo -e "$2 $R FAILURE $N"
 else
     echo -e "$2 $G SUCCESS $N"
+fi
 }
 
 echo "Sript started executing from here":$TIMESTAMP
